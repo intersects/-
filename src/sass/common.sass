@@ -1,0 +1,128 @@
+html
+  background-color: var(--background)
+  font-family: verdana, arial, helvetica, sans-serif
+  @media (prefers-color-scheme: light)
+    background-color: var(--l-background)
+
+  // Blink (Chromium)
+  //
+  ::-webkit-scrollbar
+    background-color: var(--scrolltrack)
+    @media (prefers-color-scheme: light)
+      background-color: var(--l-scrolltrack)
+  //
+  ::-webkit-scrollbar-thumb
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8)
+    background-color: var(--scrollthumb)
+    @media (prefers-color-scheme: light)
+      background-color: var(--l-scrollthumb)
+  //
+  ::-webkit-scrollbar-corner
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8)
+    background-color: var(--scrollthumb)
+    @media (prefers-color-scheme: light)
+      background-color: var(--l-scrollthumb)
+
+  // Gecko (Firefox)
+  //
+  scrollbar-color: var(--scrollbar)
+  @media (prefers-color-scheme: light)
+    scrollbar-color: var(--l-scrollbar)
+
+  transition-property: background-color
+  transition-timing-function: ease-out
+  transition-duration: 0s  // changed to 0.4s after page loads in src/state.js
+
+div, input
+  transition-property: background-color, border-color
+  transition-timing-function: ease-out
+  transition-duration: 0.4s
+
+body
+  margin: 0
+
+
+.wait
+  cursor: wait
+
+.main
+  margin: 8px 15px 15px 15px
+  color: var(--white)
+  @media (prefers-color-scheme: light)
+    color: var(--l-white)
+
+.removed
+  background-color: var(--removed-bg)
+  @media (prefers-color-scheme: light)
+    background-color: var(--l-removed-bg)
+
+.deleted
+  background-color: var(--deleted-bg)
+  @media (prefers-color-scheme: light)
+    background-color: var(--l-deleted-bg)
+
+.removed-text
+  color: $removed
+
+.deleted-text
+  color: $deleted
+
+a
+  color: var(--link)
+  @media (prefers-color-scheme: light)
+    color: var(--l-link)
+
+a:link, a:visited, a:active
+  text-decoration: none
+
+a:hover
+  text-decoration: underline
+
+.author
+  color: var(--author)
+  @media (prefers-color-scheme: light)
+    color: var(--l-author)
+
+.author:not([href])
+  color: inherit
+  text-decoration: none
+
+.nowrap
+  display: inline-block !important
+
+.space
+  margin-left: 5px
+
+select
+  background: transparent
+  border: 0
+  color: var(--dim)
+  @media (prefers-color-scheme: light)
+    color: var(--l-dim)
+
+
+// Show tooltip on click for touch/pen screens; credit to https://stackoverflow.com/a/60660207
+@media (pointer: coarse), (hover: none)
+
+  span[title], a[title]
+    position: relative
+    display: inline-flex
+    justify-content: center
+
+    &:hover::after
+      content: attr(title)
+      position: absolute
+      top: 95%
+      z-index: 1
+      padding: 3px
+      min-width: 132px
+      font-weight: normal
+      text-align: center
+      color: var(--white)
+      background-color: var(--tooltip-bg)
+      border: 1px solid var(--thread-brd)
+      border-radius: 3px
+      @media (prefers-color-scheme: light)
+        color: var(--l-white)
+        background-color: var(--l-tooltip-bg)
+        border-color: var(--l-thread-brd)
